@@ -24,7 +24,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site
 twitter_username: thedasut
 github_username:  dasut
-exclude: [Gemfile, Gemfile.lock, build.sh]
+exclude: [Gemfile, Gemfile.lock, build.sh, _site]
 
 # Build settings
 markdown: kramdown
