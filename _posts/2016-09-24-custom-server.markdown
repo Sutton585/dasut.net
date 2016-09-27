@@ -6,7 +6,7 @@ categories: posts
 ---
 # today's events
 
-Today we setup a custom digital ocean server.
+Today we setup a custom digital ocean server. And I'm playing around editting stuff.
 
 We hooked up this site via github and told the server to pull changes and rebuild the files with jekyll.
 
