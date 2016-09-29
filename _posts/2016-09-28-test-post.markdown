@@ -1,3 +1,11 @@
+---
+layout: post
+title:  "test post"
+date:   2016-09-28 20:50:17 -0400
+categories: posts
+---
+tests
+
 # Vidisset restant
 
 ## Pondere habitanda artus nec quaeque
@@ -22,6 +30,8 @@ Arce ignes et vero sparsum fumant occupat guttura tauri fugit leonem. Stamina
 nec levibus Dardanio Alexiroe missos: in ne non non lupi vocant movit hominis!
 Lacunae huc occiderat sicut satyros Latini pantherarum Aeacides abundet
 restabat, dum scelus vidisse, hic, et. Latuit legem adit.
+
+![sassy doctor who gif with !]({{ site.url }}/assets/doctorNo.gif)
 
 Quod et erat nec ignibus caeca natum vaticinos erat,
 [visa](http://marinaefine.com/refert) quae fratrum pedes, posset qui. Creverunt
