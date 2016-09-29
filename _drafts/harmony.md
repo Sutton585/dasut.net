@@ -43,6 +43,25 @@ Current "controllers" on my workstation:
 - General Activity Structure for the Harmony Software
 	- scope, non-compatibility with mutiple actions
 	- shut downs
+
+### Structure of an "Activity"
+First of all, activities are primary used by the big three buttons on the top of the remote. I hit the button, it fires off an activity like "watch FireTV" and here's an example of what my Activity might look like under-the hood.
+
+| Calling an "Activity"| Ending the Activity|
+| --- | --- |
+| Ensure TV is powered on.| Ensure TV is powered off.|
+| Ensure TV input selected is HDMI1 | Ensure Sound Equipment is powered off. |
+| Ensure Sound Equipment is powered on | Ensure Light 1 is powered off. |
+| Ensure Sound Equipment input "digital input" is selected | Ensure Light 2 is powered off. |
+| Power on Light 1 | Ensure Air Conditioner is powered off. |
+| Power on Light 2 | |
+| Turn on Air Conditioner | |
+
+how functions don't play well with each other and exit sequences.
+
+Noticing a basic problem?
+For such a simple task, why did I involve so much initially?
+
 - Device Limitations
 - Reserved buttons
 - Needs IFTTT hook to do anything with alexa
