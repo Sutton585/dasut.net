@@ -1,16 +1,22 @@
 ---
 layout: post
-title:  "Logitech Harmony Hub - Inital Thoughts"
-date:   2016-09-24 22:41:00 -0400
+title:  "Logitech Harmony Hub - Initial Thoughts"
+date:   2016-10-04 22:41:00 -0400
 categories: posts
 ---
 
 - Table of Contents
 {:toc}
 
-## Goals
+# Goals
 
-### Short-term:
+We're starting off the over-all home automation project with simply getting all my entertainment devices (and a couple LEDs) controllable on the harmony hub system.
+
+In the future, I'll post about how I managed to expand it, including smartthings, Google Home, more lights, and much more.
+
+The main goals of the harmony implementation will be under listed as short-term goals, then I'll discuss longer term possibilities below.
+
+## Short-term
 
 - Remove Clutter
 Current "controllers" on my workstation:
@@ -27,22 +33,29 @@ Current "controllers" on my workstation:
 	- LED Strip Behind Television
 	- LED Lights on Shelf
 - cool functionality
-	- Single-button access to all devices
+	- Single-controller access to all devices
 	- Integration with things like IFTTT for future functionality
-- some level of automation
+- some basic level of automation with minimal investment
 	- Using this as a hub not only for media, but also for lighting and air conditioning.
 
-### Long-term:
+## Long-term
 
 - integration with more robust automation systems
+	- Smartthings and Google Home will be future posts as I get access to them.
 - value and longevity with or without future additions.
 
-## How this product helps toward those goals
+# How this product helps toward those goals
 
-I can't get rid of the keyboard or mouse, but for the rest, I'd much rather have a single remote. Nothing revolutionary about a universal remote, but the more home automation stuff I can start squeezing in, hopefully I'll be able to expand on it in the future.
+I can't get rid of the keyboard or mouse, but for the rest, I'd much rather have a single remote. Nothing revolutionary about a universal remote, but the more home automation stuff I can start squeezing in, hopefully I'll be able to expand on it in the future. Step one is getting everything controllable from one remote, step two is evicting the remote and move to voice control.
 
-### Structure of an "Activity"
-First of all, activities are primary used by the big three buttons on the top of the remote. I hit the button, it fires off an activity like "watch FireTV" and here's an example of what my Activity might look like under-the hood.
+#Specific functionality issues
+
+Some of these are work-around-able, but a lot of the time issues come up as a result of certain features being available on the mobile app, but not the desktop app. You essentially *must* have both apps, because there are seemingly random chunks missing from one or the other, and the online documentation isn't great. It will sometimes show things and how to access them on both platforms, even though they are totally missing on one or the other.
+
+As I do into excruciating detail on limitations, keep in mind that some of this stuff (like the Activity End Sequence) might actually be solved. After writing up the issues in detail, I'm sure there is some level of control of end sequence, and other issues may be solved by working smartthings into my setup (next post).
+
+## Structure of an "Activity"
+First of all, activities are primary used by the big three buttons on the top of the harmony remote. I hit the button, it fires off an activity like "watch FireTV" and here's an example of what my Activity might look like under-the hood.
 
 Calling the "Activity"
 - Ensure TV is powered on
@@ -59,7 +72,7 @@ Ending the Activity
 - Ensure Light 2 is powered off. 
 - Ensure Air Conditioner is powered off. 
 
-### How the exit sequences cause issues
+## How the exit sequences cause issues
 One you've established which devices are involved with an activity, it asks some basic questions about what you need them to do (for example "which input source do you want your TV to go to?"). The "activity" then makes a bunch of assumptions, and most of them are not editable. The biggest of which is the exit sequence, I'll explain why.
 
 Let's say you have an activity "Turn off the lights" and an activity "Watch TV". They involve exactly the devices you would imagine they involve. Here's how the scenario plays out.
@@ -74,7 +87,7 @@ Let's say you have an activity "Turn off the lights" and an activity "Watch TV".
 
 See the problem? Those non-editable exit functions play havoc with intuitively building tasks or "activities". Also, the main buttons on the top of the remote only exist to launch activities, so you are forced into that paradigm.
 
-### Solutions?
+## Solutions?
 
 So how do I get around this huge limitation? Well, at first glance the problem is just creating an inconvenience, but is not a show-stopper. Maybe you're already coming up with a solution that involves creating multiple activities, each one with a unique permutation of which devices you need at any given time. Activities like 
 
@@ -87,7 +100,7 @@ It's already getting out of control. Remember, you really only have those three 
 
 The real solution (or at least the best option I've seen so far) is to get around the activity limitations by convincing your device that everything is a single device. Hold on, we're going down a weird rabbit hole now.
 
-### Harmony's IR "learning"
+## Harmony's IR "learning"
 
 One of the great features on this device is how it's able to be "taught" commands from any Infrared remote control, and then replicate those commands from it's IR blaster base. This is what enabled me to teach it the commands for my air conditioner and LED lights. However, this can be exploited somewhat.
 
@@ -102,16 +115,17 @@ This enables me to limit my number of activities to about 2 (Watch TV, Switch to
 - "Turn up AC"
 - "Turn Down AC"
 
-### Limitations with current solution
+## Limitations with current solution
 
 Alright, so now our remote can do everything we need, right? Well, there are still some strong limitations.
 
 - Commands only work within activities
 - The "Home Control" section of buttons are not usable unless you've added specific branded devices.
+	- I will be integrating smartthings to try to help with this issue. This is another ~$90, but it seems to be able to solve some problems and open me up to more home control stuff.
 - The only way to integrate Alexa, is via IFTTT which can only support activities, not individual commands.
 
 
-### Commands only work within activities
+## Commands only work within activities
 
 Now that our system has two activities (TV, PC) and we've manually programmed buttons on either of these activities to do the same thing, what happens when I don't feel like turning on the TV, but I still want to play with the air conditioner?
 
@@ -119,19 +133,19 @@ No dice. Until you've fired off an activity, there's no context for the rest of 
 
 There's one exception to this, as far as I'm aware. The "Home Control" buttons on the remote. These are intended to do things like toggle lights, adjust temperature on air conditioners, that sort of thing. The buttons are intuitively placed, and offer a lot of great functionality. So why don't we just use those?
 
-### The "Home Control" buttons only control very specific branded devices
+## The "Home Control" buttons only control very specific branded devices
 
 Phillips Hue devices, Nest brand thermostats, and certain other devices are controllable with these buttons. These buttons are not able to be used for ANYTHING else. Especially if it's just something that uses Infrared commands.
 
 I don't have any of those branded devices, so that button real estate and great functionality is just dead to me. Nothing I can do. What a waste.
 
-### How this limits my planned integration with Alexa/Echo devices
+## How this limits my planned integration with Alexa/Echo devices
 
 The primary concern here is that Alexa commands can fire off an activity and nothing else. This means that we'd have to return to the solution of having a activity programmed for each permutation of device combinations. Then we'd have to give each activity a specific code-word we'd have to remember for the purposes of telling the echo what to do.
 
 Another concern is that even when we configure to do this, we do it through an abstraction. We have to utilize the program IFTTT (previously called "if this, then that") which introduces a bit of lag as it has to query yet another online resource for a command.
 
-Even assuming we're okay with all these tradeoffs, there's another big one in the way Alexa works in general. You aren't going to be able to have any commands in an intuitive or conversational way. You have to structure commands like this:
+Even assuming we're okay with all these trade-offs, there's another big one in the way Alexa works in general. You aren't going to be able to have any commands in an intuitive or conversational way. You have to structure commands like this:
 
 "Alexa, trigger turn on TV"
 
@@ -144,8 +158,12 @@ This is not customizable, it needs to here these words to do these actions (in p
 - "turn on TV" (find the activity IFTTT associated with this phrase and fire it, or don't, no need to alert user)
 	- semi-flexible, it's really just whatever you named the action in IFTTT.
 
-## Overall thoughts
-## Next Steps
+# Overall thoughts
+# Next Steps
+
 The obvious next step for me seems to be amazon echo or dot. The big drawback is that I'm trying to invest in amazon's walled-garden, but the devices don't really interact with each other in the way I'm looking for. 
 Ideally, I'd be able to tell the echo "play season one of Deadwood on HBO" and it would know to convey the command to the fireTV. In reality, they don't really communicate it seems, sort of killing the single interface for the whole home.
+
 The exception is that I can tie specific commands to harmony actions through IFTTT, so I'd have to deal with the above-detailed limitations of the activity structure as well as learning to do exact commands like "trigger turn on TV" or "trigger turn off lights". Essentially, a non-intuitive and less functional version of my physical remote.
+
+As I wrote this, Google Home was finally announced. I have a few reasons to believe that a lot of my issues will be solved by moving towards smartthings, Google Chromecast, and Google Home. My future posts will probably trend in that direction instead of the previously written Alexa stuff, but we'll only know for sure when it's released in November.

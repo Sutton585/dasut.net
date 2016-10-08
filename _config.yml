@@ -17,11 +17,11 @@ title: Dave Sutton
 destination: "public/"
 email: admin@dasut.net
 description: > # this means to ignore newlines until "baseurl:"
-  A place for experimenting with tech. Goofing around with all sorts of nonsense.
+  A place for experimenting with tech and goofing around with all sorts of nonsense. Info about me at DavidSutton.net
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site
+url: "http://dasut.net" # the base hostname & protocol for your site
 twitter_username: thedasut
-github_username:  dasut
+#github_username:  dasut
 exclude: [Gemfile, Gemfile.lock, build.sh, _site]
 
 # Build settings
