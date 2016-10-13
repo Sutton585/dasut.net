@@ -14,7 +14,7 @@ We're starting off the over-all home automation project with simply getting all 
 
 In the future, I'll post about how I managed to expand it, including smartthings, Google Home, more lights, and much more.
 
-The main goals of the harmony implementation will be under listed as short-term goals, then I'll discuss longer term possibilities below.
+The main goals of the harmony implementation will be listed below as "short-term goals", then I'll discuss longer term possibilities below that.
 
 ## Short-term
 
